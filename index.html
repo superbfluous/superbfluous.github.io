@@ -1,8 +1,44 @@
 <html>
     <head>
-        <title>Hello World!</title>
+        <title>Wright's Intersectionality "Wheel" - online edition</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Wright's Intersectionality "Wheel" - online edition</h1>
+        <button id="go" onclick="go()">GO!</button>
+        <p id="upper"></p>
+        <p>and</p>
+        <p id="lower"></p>
     </body>
+    <script>
+        var characteristics = [
+            "Age",
+            "Disabled",
+            "Faith",
+            "LGBTQI+",
+            "Low socio-economic",
+            "Mental health",
+            "Neurodivergent",
+            "Parent or carer",
+            "Race & ethnicity",
+            "Woman"];
+
+        function go() {
+            upperIndex = getIndex()
+            document.getElementById("upper").innerHTML = characteristics[upperIndex];
+            document.getElementById("lower").innerHTML = characteristics[getIndex(upperIndex)];
+
+            // TODO: Trigger screen readers
+        }
+
+        function getIndex(exclude) {
+            index = Math.floor(Math.random()*characteristics.length)
+
+            if (index == exclude) {
+                index = getIndex(exclude);
+            }
+
+            return index;
+        }
+        
+    </script>
 </html>
